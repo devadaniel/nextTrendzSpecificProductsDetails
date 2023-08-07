@@ -52,7 +52,7 @@ class ProductItemDetails extends Component {
       },
     }
     const response = await fetch(`https://apis.ccbp.in/products/${id}`, option)
-    console.log(response)
+    this.setState({apiStatus: apiStatusConstants.inProgress })
 
     if (response.ok) {
       const fetchedData = await response.json()
