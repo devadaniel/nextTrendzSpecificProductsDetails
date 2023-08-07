@@ -44,7 +44,9 @@ class ProductItemDetails extends Component {
     const {match} = this.props
     const {params} = match
     const {id} = params
-    const jwtToken = Cookies.get('jwt_token')
+    this.setState({apiStatus: apiStatusConstants.inProgress,})
+    
+    const jwtToken = Cookies.get(jwt_token')
     const option = {
       method: 'GET',
       headers: {
@@ -52,8 +54,7 @@ class ProductItemDetails extends Component {
       },
     }
     const response = await fetch(`https://apis.ccbp.in/products/${id}`, option)
-    this.setState({apiStatus: apiStatusConstants.inProgress })
-
+    
     if (response.ok) {
       const fetchedData = await response.json()
       const updatedData = this.getFormattedData(fetchedData)
